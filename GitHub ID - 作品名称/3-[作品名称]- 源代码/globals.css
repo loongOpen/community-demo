@@ -1,0 +1,258 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer base {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply py-2 font-bold;
+    }
+    h1 {
+        @apply text-3xl;
+    }
+    h2 {
+        @apply text-2xl;
+    }
+
+    h3 {
+        @apply text-xl;
+    }
+
+    h4 {
+        @apply text-lg;
+    }
+
+    h5 {
+        @apply text-base;
+    }
+    h6 {
+        @apply text-sm;
+    }
+    p {
+        @apply text-lg;
+    }
+    /* a {
+        @apply text-xl;
+    } */
+}
+
+@layer components {
+    .card {
+        @apply h-full w-full rounded-sm border bg-white p-4;
+    }
+    .md pre {
+        @apply overflow-auto rounded-sm bg-[#f5f5f5] p-4;
+    }
+
+    .md p {
+        @apply break-all px-1 py-2;
+    }
+    .md p img {
+        @apply m-auto max-w-[60%] py-4;
+    }
+    .md table {
+        @apply m-auto min-w-[50%] table-auto border-collapse border;
+    }
+    .md table th {
+        @apply border border-slate-300 px-[4px] py-[2px];
+    }
+    .md table tbody {
+        @apply text-slate-600;
+    }
+    .md table td {
+        @apply border border-slate-300 py-2 text-center;
+    }
+    .md a {
+        @apply break-all text-primary hover:text-primary-light;
+    }
+    .md table td a {
+        @apply w-[200px];
+    }
+    .md-list-item {
+        @apply flex;
+    }
+    .md-list-item p {
+        @apply line-clamp-2 text-slate-400;
+    }
+    .md-list-item img {
+        @apply hidden;
+    }
+    .md table > thead:has(> tr > th:empty):not(:has(> tr > th:not(:empty))) {
+        display: none;
+    }
+    /* ... */
+}
+body {
+    /* filter: grayscale(100%); */
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    overflow: auto;
+}
+:disabled {
+    cursor: not-allowed;
+}
+/* // $primary-color: #64ff00;
+// :export {
+//   primaryColor: $primary-color;
+// } */
+.ant-btn.ant-btn-sm {
+    /* font-size: 12px !important; */
+    /* color: aqua; */
+}
+
+/* 设置滚动条的宽度、颜色和背景 */
+::-webkit-scrollbar {
+    width: 4px; /* 宽度 */
+    height: 4px;
+    -webkit-scrollbar-orientation: horizontal; /* 设置为横向滚动条 */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* 滚动条背景颜色 */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* 滚动条滑块颜色 */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* 鼠标悬停时滑块颜色 */
+}
+.ant-btn-link {
+    color: var(--primary-color) !important;
+}
+
+.ant-menu-item-selected {
+    font-weight: bold;
+}
+
+.community {
+    width: 80vw;
+    .ant-tabs-nav {
+        height: 44px;
+        overflow: hidden;
+    }
+
+    .ant-tabs-nav-wrap {
+        margin-bottom: -4px;
+    }
+
+    .ant-tabs-nav-list {
+        /* min-width: 120px; */
+        /* width: 280px; */
+        overflow-x: scroll;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .addArticle {
+        font-size: 18px;
+        line-height: 1.6rem;
+    }
+}
+
+.addArticle {
+    width: 100%;
+    text-align: center;
+
+    a {
+        display: inline-block;
+        width: 100%;
+    }
+    svg {
+        display: inline-block;
+    }
+    span {
+        display: inline-block;
+    }
+}
+
+.searchButton {
+    color: #fff;
+    height: 100% !important;
+}
+
+.hiddenSearch {
+    padding: 0px;
+    transition: 0.1s;
+
+    .searchIcon {
+        display: none;
+        transition: 0.5s;
+    }
+    .searchInput {
+        display: none;
+        transition: 0.5s;
+    }
+}
+
+.activeSearch {
+    padding-left: 12px;
+    transition: 0.1s;
+    .searchIcon {
+        display: block;
+        transition: 0.5s;
+    }
+    .searchInput {
+        display: block;
+        transition: 0.5s;
+    }
+}
+
+.mobileLogout {
+    .ant-modal-content {
+        padding: 20px 0px 0px !important;
+        text-align: center;
+
+        .ant-btn {
+            padding: 23px;
+            width: 50%;
+            border-radius: 0 0 0 6px;
+        }
+        .ant-modal-confirm-btns .ant-btn + .ant-btn {
+            margin-inline-start: 0px;
+            border-radius: 0 0 6px 0;
+        }
+    }
+
+    .ant-modal-confirm {
+        .ant-modal-confirm-title {
+            width: max-content;
+        }
+        .ant-modal-confirm-paragraph {
+            max-width: 100%;
+            display: inline-block;
+            text-align: center;
+            padding: 24px;
+        }
+    }
+    .ant-modal-confirm-btns {
+        text-align: center;
+        border-radius: 10px;
+    }
+}
+.ant-menu .ant-menu-title-content {
+    display: block !important;
+}
+
+#content img {
+    cursor: zoom-in;
+}
+
+.ant-image-preview-mask {
+    z-index: 1001 !important;
+}
+
+.ant-image-preview-wrap {
+    z-index: 1002 !important;
+}
