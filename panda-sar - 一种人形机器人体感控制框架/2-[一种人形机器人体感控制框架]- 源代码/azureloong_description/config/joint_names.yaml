@@ -1,0 +1,37 @@
+# =====================================================================================
+#   这份文件是机器人关节命名文件，它定义了人形机器人的关节名称。
+#   作者：pandasar@2024.12, strtrek@2025.6       开源协议：Apache License 2.0
+# =====================================================================================
+controller_joint_names: [
+  'robot_head_yaw_joint',
+  'robot_head_pitch_joint',
+  'robot_waist_pitch_joint',
+  'robot_waist_roll_joint',
+  'robot_waist_yaw_joint',
+  'robot_thigh_r_roll_joint',
+  'robot_thigh_r_yaw_joint',
+  'robot_thigh_r_pitch_joint',
+  'robot_thigh_l_roll_joint',
+  'robot_thigh_l_yaw_joint',
+  'robot_thigh_l_pitch_joint',
+  'robot_calf_r_pitch_joint',
+  'robot_calf_l_pitch_joint',
+  'robot_foot_r_pitch_joint',
+  'robot_foot_r_roll_joint',
+  'robot_foot_l_pitch_joint',
+  'robot_foot_l_roll_joint',
+  'robot_arm_r_pitch_joint',
+  'robot_arm_r_roll_joint',
+  'robot_arm_r_yaw_joint',
+  'robot_arm_l_pitch_joint',
+  'robot_arm_l_roll_joint',
+  'robot_arm_l_yaw_joint',
+  'robot_forearm_r_pitch_joint',
+  'robot_forearm_r_roll_joint',
+  'robot_forearm_l_pitch_joint',
+  'robot_forearm_l_roll_joint',
+  'robot_hand_r_roll_joint',
+  'robot_hand_r_pitch_joint',
+  'robot_hand_l_roll_joint',
+  'robot_hand_l_pitch_joint'
+]
