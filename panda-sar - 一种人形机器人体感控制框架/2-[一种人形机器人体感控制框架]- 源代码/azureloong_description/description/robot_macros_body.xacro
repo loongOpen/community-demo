@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!-- ===================================================================================== -->
+<!-- |    这份文件是机器人描述文件，它定义了人形机器人的肢体和关节的形态、运动方式以及运动限制。        | -->
+<!-- |    作者：pandasar@2024.12, strtrek@2025.6       开源协议：Apache License 2.0         | -->
+<!-- ===================================================================================== -->
+
+<!-- 机器人躯干描述文件 -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_macros_body">
+    
+    <!-- 宏定义：机器人躯干（robot_body） -->
+    <xacro:macro name="robot_body" params="name base color">
+        <!-- 部件 -->
+        <link name="robot_${name}_link">
+            <!-- 可见描述 -->
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://${my_robot}/meshes/Link_body.STL"/>
+                </geometry>
+                <material name="${color}"/>
+            </visual>
+            <!-- 碰撞描述 -->
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry>
+                    <mesh filename="package://${my_robot}/meshes/Link_body.STL"/>
+                </geometry>
+            </collision>
+            <!-- 动惯量描述 -->
+            <inertial>
+                <origin rpy="0 0 0" xyz="-0.0056641 -0.0013367 0.23829"/>
+                <mass value="22.447"/>
+                <inertia ixx="0.3742" ixy="0.0009471" ixz="0.004646" iyy="0.27691" iyz="0.0040142" izz="0.22104"/>
+            </inertial>
+        </link>
+        <!-- 关节 -->
+        <joint name="robot_${name}_joint" type="fixed">
+            <!-- 父连接 -->
+            <parent link="${base}"/>
+            <!-- 子连接 -->
+            <child link="robot_${name}_link"/>
+            <!-- 关节运动原点 -->
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+        </joint>
+    </xacro:macro>
+    
+</robot>
