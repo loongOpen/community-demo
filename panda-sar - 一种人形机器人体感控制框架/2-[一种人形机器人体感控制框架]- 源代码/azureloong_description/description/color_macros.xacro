@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!-- ===================================================================================== -->
+<!-- |    这份文件是机器人描述文件，它定义了人形机器人的肢体和关节的形态、运动方式以及运动限制。 | -->
+<!-- |    作者：pandasar@2024.12, strtrek@2025.6       开源协议：Apache License 2.0        | -->
+<!-- ===================================================================================== -->
+
+<!-- 预定义物理仿真定义（色彩） -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="inertial_macros">
+    <!-- 这些颜色宏可以在其他 xacro 文件中被引用                                              -->
+    <!-- 包括：                                                                             -->
+    <!--      白色（white） 橙色（orange） 蓝色（blue） 黑色（black）                         -->  
+    <!--      灰色（gray） 绿色（green） 红色（red） 黄色（yellow） 紫色（purple）             -->
+    <!--      粉色（pink） 青色（cyan） 棕色（brown） 金色（gold） 银色（silver）              -->
+
+    <!-- 白色 -->
+    <material name="white"><color rgba="1 1 1 1"/></material>
+    
+    <!-- 橙色 -->
+    <material name="orange"><color rgba="1 0.3 0.1 1"/></material>
+    
+    <!-- 蓝色 -->
+    <material name="blue"><color rgba="0.2 0.2 1 1"/></material>
+    
+    <!-- 黑色 -->
+    <material name="black"><color rgba="0 0 0 1"/></material>
+    
+    <!-- 灰色 -->
+    <material name="gray"><color rgba="0.8 0.8 0.8 0.8"/></material>
+    
+    <!-- 绿色 -->
+    <material name="green"><color rgba="0.2 1 0.2 1"/></material>
+    
+    <!-- 红色 -->
+    <material name="red"><color rgba="1 0 0 1"/></material>
+    
+    <!-- 黄色 -->
+    <material name="yellow"><color rgba="1 1 0 1"/></material>
+    
+    <!-- 紫色 -->
+    <material name="purple"><color rgba="0.5 0 0.5 1"/></material>
+    
+    <!-- 粉色 -->
+    <material name="pink"><color rgba="1 0.75 0.8 1"/></material>
+    
+    <!-- 青色 -->
+    <material name="cyan"><color rgba="0 1 1 1"/></material>
+    
+    <!-- 棕色 -->
+    <material name="brown"><color rgba="0.6 0.4 0.2 1"/></material>
+    
+    <!-- 金色 -->
+    <material name="gold"><color rgba="1 0.84 0 1"/></material>
+    
+    <!-- 银色 -->
+    <material name="silver"><color rgba="0.75 0.75 0.75 1"/></material>
+
+    <!-- 青龙风-->
+    <material name="azureloong_style"><color rgba="0.75294 0.75294 0.75294 1"/></material>
+
+</robot>

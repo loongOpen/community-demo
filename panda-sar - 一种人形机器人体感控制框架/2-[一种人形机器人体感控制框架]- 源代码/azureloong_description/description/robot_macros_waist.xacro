@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<!-- =================================================================================== -->
+<!-- |    这份文件是机器人描述文件，它定义了人形机器人的肢体和关节的运动方式以及运动限制。           | -->
+<!-- |    作者：pandasar、strtrek             开源协议：Apache License 2.0                | -->
+<!-- =================================================================================== -->
+
+<!-- 机器人腰部描述文件 -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_macros_waist">
+
+    <!-- 宏定义：机器人腰部（robot_waist）【俯仰（pitch: -17°～45°）滚转（roll: -40°～40°）偏航（yaw: -45°～45°）】  -->
+    <xacro:macro name="robot_waist" params="name base color">
+        <!-- 腰部俯仰运动（pitch: -17°～45°） -->
+        <!-- 部件描述 -->
+        <link name="robot_${name}_pitch_link">
+            <!-- 可见描述 -->
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry><mesh filename="package://${my_robot}/meshes/Link_waist_pitch.STL"/></geometry>
+                <material name="${color}"/>
+            </visual>
+            <!-- 碰撞描述 -->
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry><mesh filename="package://${my_robot}/meshes/Link_waist_pitch.STL"/></geometry>
+            </collision>
+            <!-- 动惯量描述 -->
+            <inertial>
+                <!-- 质心 -->
+                <origin rpy="0 0 0" xyz="-0.00073496 0.049925 -2.9695E-05"/>
+                <!-- 质量 -->
+                <mass value="2.6964"/>
+                <!-- 惯性矩阵 -->
+                <inertia ixx="0.0051971" ixy="-4.37E-05" ixz="3E-07" iyy="0.0047413" iyz="6E-06" izz="0.0061906"/>
+            </inertial>
+        </link>
+        <!-- 关节描述 -->
+        <joint name="robot_${name}_pitch_joint" type="revolute">
+            <!-- 父连接 -->
+            <parent link="robot_${base}_link"/>
+            <!-- 子连接 -->
+            <child link="robot_${name}_pitch_link"/>
+            <!-- 关节运动原点 -->
+            <origin rpy="0 0 0" xyz="0 -0.06525 0"/>
+            <!-- 关节轴位 -->
+            <axis xyz="0 -1 0"/>
+            <!-- 关节限位 俯仰（pitch: -17°～45°） -->
+            <limit effort="315" lower="-0.29671" upper="0.78540" velocity="3.72"/>
+        </joint>
+
+        <!-- 腰部滚转运动（roll: -40°～40°） -->
+        <!-- 部件描述 -->
+        <link name="robot_${name}_roll_link">
+            <!-- 可见描述 -->
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry><mesh filename="package://${my_robot}/meshes/Link_waist_roll.STL"/></geometry>
+                <material name="${color}"/>
+            </visual>
+            <!-- 碰撞描述 -->
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry><mesh filename="package://${my_robot}/meshes/Link_waist_roll.STL"/></geometry>
+            </collision>
+            <!-- 动惯量描述 -->
+            <inertial>
+                <!-- 质心 -->
+                <origin rpy="0 0 0" xyz="-0.0037424 -0.001 -0.016856"/>
+                <!-- 质量 -->
+                <mass value="2.9806"/>
+                <!-- 惯性矩阵 -->
+                <inertia ixx="0.0071327" ixy="0" ixz="-0.00358" iyy="0.018825" iyz="0" izz="0.016056"/>
+            </inertial>
+        </link>
+        <!-- 关节描述 -->
+        <joint name="robot_${name}_roll_joint" type="revolute">
+            <!-- 父连接 -->
+            <parent link="robot_${name}_pitch_link"/>
+            <!-- 子连接 -->
+            <child link="robot_${name}_roll_link"/>
+            <!-- 关节运动原点 -->
+            <origin rpy="0 0 0" xyz="-0.064 0.0655 0"/>
+            <!-- 关节轴位 -->
+            <axis xyz="1 0 0"/>
+            <!-- 关节限位 滚转（roll: -40°～40°） -->
+            <limit effort="315" lower="-0.69813" upper="0.69813" velocity="3.72"/>
+        </joint>
+
+        <!-- 腰部偏航运动（yaw: -45°～45°） -->
+        <!-- 部件描述 -->
+        <link name="robot_${name}_link">
+            <!-- 可见描述 -->
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry><mesh filename="package://${my_robot}/meshes/Link_waist_yaw.STL"/></geometry>
+                <material name="${color}"/>
+            </visual>
+            <!-- 碰撞描述 -->
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry><mesh filename="package://${my_robot}/meshes/Link_waist_yaw.STL"/></geometry>
+            </collision>
+            <!-- 动惯量描述 -->
+            <inertial>
+                <origin rpy="0 0 0" xyz="-0.096172 -0.001 -0.057836"/>
+                <mass value="7.3588"/>
+                <inertia ixx="0.091635" ixy="0" ixz="0.0058036" iyy="0.032766" iyz="0" izz="0.10764"/>
+            </inertial>
+        </link>
+        <!-- 关节描述 -->
+        <joint name="robot_${name}_yaw_joint" type="revolute">
+            <!-- 父连接 -->
+            <parent link="robot_${name}_roll_link"/>
+            <!-- 子连接 -->
+            <child link="robot_${name}_link"/>
+            <!-- 关节运动原点 -->
+            <origin rpy="0 0 0" xyz="0.0675 0 -0.098"/>
+            <!-- 关节轴位 -->
+            <axis xyz="0 0 1"/>
+            <!-- 关节限位 偏航（yaw: -45°～45°） -->
+            <limit effort="121" lower="-0.78540" upper="0.78540" velocity="5.92"/>
+        </joint>
+        
+    </xacro:macro>
+
+</robot>

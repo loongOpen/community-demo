@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!-- ===================================================================================== -->
+<!-- |    这份文件是机器人描述文件，它定义了人形机器人的肢体和关节的形态、运动方式以及运动限制。        | -->
+<!-- |    作者：pandasar@2024.12, strtrek@2025.6       开源协议：Apache License 2.0         | -->
+<!-- ===================================================================================== -->
+
+<!-- 机器人小腿描述文件 -->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="robot_macros_calf">
+
+    <!-- 宏定义：机器人小腿（robot_calf）【俯仰（pitch: -135°～5°）】 -->
+    <xacro:macro name="robot_calf" params="name base laterality color">
+        <!-- 小腿俯仰运动（pitch: -135°～5°） -->
+        <!-- 部件描述 -->
+        <link name="robot_${name}_${laterality}_link">
+            <!-- 可见描述 -->
+            <visual>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry><mesh filename="package://${my_robot}/meshes/Link_knee_${laterality}_pitch.STL"/></geometry>
+                <material name="${color}"/>
+            </visual>
+            <!-- 碰撞描述 -->
+            <collision>
+                <origin xyz="0 0 0" rpy="0 0 0"/>
+                <geometry><mesh filename="package://${my_robot}/meshes/Link_knee_${laterality}_pitch.STL"/></geometry>
+            </collision>
+            <!-- 动惯量描述 -->
+            <inertial>
+                <!-- 右侧肢体 -->
+                <xacro:if value="${laterality == 'r'}">
+                    <!-- 质心 -->
+                    <origin rpy="0 0 0" xyz="-0.0096425 2.9338E-06 -0.13601"/>
+                    <!-- 质量 -->
+                    <mass value="2.9775"/>
+                    <!-- 惯性矩阵 -->
+                    <inertia ixx="0.02386" ixy="6.76E-05" ixz="-0.0004656" iyy="0.024184" iyz="-0.0005481" izz="0.0023083"/>
+                </xacro:if>
+                <!-- 左侧肢体 -->
+                <xacro:if value="${laterality == 'l'}">
+                    <!-- 质心 -->
+                    <origin rpy="0 0 0" xyz="-0.0096425 -2.8684E-06 -0.13601"/>
+                    <!-- 质量 -->
+                    <mass value="2.9775"/>
+                    <!-- 惯性矩阵 -->
+                    <inertia ixx="0.023859" ixy="-6.76E-05" ixz="-0.0004656" iyy="0.024183" iyz="0.000548" izz="0.0023083"/>
+                </xacro:if>
+            </inertial>
+        </link>
+        <!-- 关节描述 -->
+        <joint name="robot_${name}_${laterality}_pitch_joint" type="revolute">
+            <!-- 父连接 -->
+            <parent link="robot_${base}_${laterality}_link"/>
+            <!-- 子连接 -->
+            <child link="robot_${name}_${laterality}_link"/>
+            <!-- 右侧肢体 -->
+            <xacro:if value="${laterality == 'r'}">
+                <!-- 关节运动原点 -->
+                <origin rpy="0 0 0" xyz="0 -0.01125 -0.4"/>
+                <!-- 关节运动轴位 -->
+                <axis xyz="0 -1 0"/>
+                <!-- 关节运动限位 -->
+                <limit effort="396" lower="-2.35619" upper="0.08727" velocity="19.16"/>
+            </xacro:if>
+            <!-- 左侧肢体 -->
+            <xacro:if value="${laterality == 'l'}">
+                <!-- 关节运动原点 -->
+                <origin rpy="0 0 0" xyz="0 0.01125 -0.4"/>
+                <!-- 关节运动轴位 -->
+                <axis xyz="0 -1 0"/>
+                <!-- 关节运动限位 俯仰（pitch: -135°～5°） -->
+                <limit effort="396" lower="-2.35619" upper="0.08727" velocity="19.16"/>
+            </xacro:if>
+        </joint>
+
+    </xacro:macro>
+
+</robot>
